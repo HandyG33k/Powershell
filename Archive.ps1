@@ -66,6 +66,9 @@ if (Test-Path -Path $Target) {
     New-Item -Path $Target -ItemType Directory
     }
 
+# Fix issue where End date does not incude the date specified even though it is use -le (less than or Equal to)
+$EndDate = $EndDate.AddDays(1).AddSeconds(-1)
+
 # Move file in the date range from the $File to the $Target archive the data for later use 
 
 Get-ChildItem -Path $File -Filter *.dat | Where-object {
