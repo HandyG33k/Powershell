@@ -72,5 +72,5 @@ $EndDate = $EndDate.AddDays(1).AddSeconds(-1)
 # Move file in the date range from the $File to the $Target archive the data for later use 
 
 Get-ChildItem -Path $File -Filter *.dat | Where-object {
-    $_.LastWriteTime -ge $StartDate -and $_.LastWriteTime -le $EndDate
+    $_.CreationTime -ge $StartDate -and $_.CreationTime -le $EndDate
 } | Move-Item -Destination $Target
